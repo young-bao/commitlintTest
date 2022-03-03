@@ -101,3 +101,10 @@ npm install standard-version --save-dev
 ```
 "release": "standard-version"
 ```
+
+###参考资料：
+
+- <https://juejin.cn/post/6982192362583752741#heading-6>
+- <https://juejin.cn/post/7038143752036155428#heading-3>
+- <https://juejin.cn/post/6947200436101185566#heading-7>
+- <https://github.com/zuoxiaobai/commitizen-practice-demo>
