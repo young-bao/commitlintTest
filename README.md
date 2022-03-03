@@ -11,7 +11,7 @@
 
 ## 1. eslint（Js 编码规范，检测并提示错误或警告信息）
 
-```
+```JavaScript
 npm i eslint -D
 npx eslint --init
 ```
@@ -27,7 +27,7 @@ npx eslint --init
 
 ## 2. prettier（代码风格管理，更好的代码风格效果）
 
-```
+```JavaScript
   npm i prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue -D
 ```
 
@@ -46,16 +46,17 @@ npx eslint --init
 
 ## 3. Git 的提交规范
 
-| 使用工具    | 作用                                                                   |
-| ----------- | ---------------------------------------------------------------------- |
-| husky       | 对 git 执行的一些命令，通过对应的 hooks 钩子触发，执行自定义的脚本程序 |
-| lint-staged | 只检测 git add . 中暂存区的文件，对过滤出的文件执行脚本                |
-| commitlint  | 检测 git commit 内容是否符合定义的规范                                 |
-| commitizen  | 提示定义标准化的 git commit                                            |
+| 使用工具         | 作用                                                                   |
+| ---------------- | ---------------------------------------------------------------------- |
+| husky            | 对 git 执行的一些命令，通过对应的 hooks 钩子触发，执行自定义的脚本程序 |
+| lint-staged      | 只检测 git add . 中暂存区的文件，对过滤出的文件执行脚本                |
+| commitlint       | 检测 git commit 内容是否符合定义的规范                                 |
+| commitizen       | 提示定义标准化的 git commit                                            |
+| standard-version | 自动生成 changelog 自动打 tag，自动 commit                             |
 
 - 安装 husky、lint-staged
 
-```
+```JavaScript
 npm i lint-staged husky -D
 npm set-script prepare "husky install" // 在package.json中添加脚本
 npm run prepare // 初始化husky
@@ -69,9 +70,9 @@ npm run prepare // 初始化husky
 
 - 安装 commitlint、@commitlint/config-conventional
 
-```
+```JavaScript
 npm i commitlint @commitlint/config-conventional cz-conventional-changelog -D
-yarn husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+yarn husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"' //git commit之前执行
 ```
 
 - @commitlint/config-conventional 这是一个规范配置,标识采用什么规范来执行消息校验, 这个默认是 Angular 的提交规范
@@ -86,3 +87,17 @@ yarn husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
   },
   ```
   - 然后在根目录添加 commitlint.config.js
+
+然后就可以`git add`将文件添加到 git 的暂存区再使用`git cz`（相当于`git commit`）选择适当的配置与描述如果不规范则会提加失败,成功则可以提交到本地的版本库
+
+- 安装 [standard-version](https://www.npmjs.com/package/standard-version)
+
+```JavaScript
+npm install standard-version --save-dev
+```
+
+- package.json 中 script 设置：
+
+```
+"release": "standard-version"
+```
